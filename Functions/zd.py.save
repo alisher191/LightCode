@@ -1,0 +1,4 @@
+def rec(x):
+    print(x)
+
+rec(5)

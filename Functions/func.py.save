@@ -1,0 +1,56 @@
+import random
+
+list_1 = []
+mid = len(list_1) // 2 - 1
+n = int(input('Введите размер списка: '))
+for i in range(n):
+    list_1.append(random.randint(-20, 20))
+
+print('Оригинальный список:', list_1)
+print('Обратный список:', list_1[:mid:-1], list_1[mid::-1])
+
+
+
+'''
+def main(number):
+    print(number)
+    if number == 0:
+        return number
+    else:
+        main(number - 1)
+main(20)
+'''
+'''
+x = input()
+b = 56
+def sum(int1=13):
+    global b
+    b = 30
+    v = b + int1
+    print(v)
+c = sum(26)
+'''
+'''
+def func():
+    print("Hello world!")
+func()
+func()
+func()
+'''
+'''
+name = input("Введите ваше имя: ")
+born = int(input('Введите год рождения: '))
+def func(a, b):
+    age = 2022 - b
+    print("Это работает первая функция")
+    print(f"Привет {a}!\nТебе {age}!")
+
+def pr():
+    print("Это работает вторая функция")
+    print("Hello!")
+
+def ret():
+    print('Это работа третьей функции')
+    return func(name, born), pr()
+ret()
+'''
