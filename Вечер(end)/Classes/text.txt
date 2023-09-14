@@ -1,0 +1,92 @@
+# 1. Узнайте какие телефоны из Kivano стоят столько же сколько и компьютеры из Sulpak.
+# Solution 1:
+# SELECT kivano.price,kivano.product_name, sulpak.price, sulpak.product_name
+    # FROM kivano,sulpak
+        # WHERE kivano.category_id = 1 AND sulpak.category_id = 2 AND kivano.price = sulpak.price;
+
+# Solution 2:
+# SELECT kivano.price,kivano.product_name, sulpak.price, sulpak.product_name
+    # FROM kivano INNER JOIN sulpak
+        # ON kivano.category_id = 1 AND sulpak.category_id = 2 AND kivano.price = sulpak.price;
+
+
+2. Выведите все модели Iphone в магазинах.
+# SELECT kivano.product_name, sulpak.product_name FROM kivano, sulpak WHERE kivano.product_name LIKE 'Iphone%' AND sulpak.product_name LIKE 'Iphone%';
+
+
+# 3. Выведите на экран список дат всех ноутбуков из sulpak и только тех телефонов которые имеют одинаковую дату выхода с компьютером из таблицы kivano.
+# SELECT prodused_date
+#   FROM produsers
+#   WHERE prodused_date IN (
+#       SELECT produsers.prodused_date
+#       FROM sulpak INNER JOIN produsers
+#       ON sulpak.produser_id = produsers.produser_id
+#       WHERE sulpak.category_id = 2)
+#           AND prodused_date IN (
+#               SELECT produsers.prodused_date
+#               FROM kivano INNER JOIN produsers
+#               ON kivano.produser_id = produsers.produser_id
+#               WHERE kivano.category_id = 1);
+
+# 4. Выведите все китайские продукты.
+# SELECT produser_company
+    # FROM produsers
+        # WHERE produser_country = 'China';
+
+# 5. Напишите запрос, который выводит продукты любого магазина в порядке их добавления.
+# Solution 1:
+# SELECT * FROM kivano;
+
+# Solution 2:
+# SELECT * FROM sulpak;
+
+# 6. Найдите товары, которые есть в kivano но нет в sulpak.
+# SELECT *
+    # FROM kivano
+        # WHERE product_name
+            # NOT IN (
+                # SELECT product_name FROM sulpak
+                #);
+
+# 7. Найдите все товары в магазине sulpak, где компания-производитель содержит букву "m" в имени.
+# SELECT sulpak.product_name
+#     FROM sulpak
+#         INNER JOIN produsers
+#             ON sulpak.produser_id = produsers.produser_id
+#                 WHERE produsers.produser_company LIKE '%m%';
+
+# 8. Найдите товары, которые есть и в kivano u sulpak.
+# SELECT *
+#     FROM kivano
+#         INNER JOIN sulpak
+#             ON kivano.product_name = sulpak.product_name;
+
+# 9. Найдите китайские товары из kivano, которые в названии содержат "k".
+# SELECT *
+#     FROM kivano
+#         LEFT JOIN produsers
+#             ON kivano.produser_id = produsers.produser_id
+#                 WHERE produsers.produser_country = 'China'
+#                     AND product_name
+#                         LIKE '%k%';
+
+# 10. Найдите самый последний добавленный товар в таблице produsers, и поменяйте компанию на Apple, и страну на kyrgyzstan.
+# UPDATE produsers
+#     SET produser_company = 'Apple', produser_country = 'Kyrgyzstan'
+#         WHERE produser_id = (
+#             SELECT MAX(produser_id) FROM produsers
+#         );
+
+# 11. Нужно объеденить 2 магазина по product_name и вывести на экран имя продукта и его цену из обоих магазинов, однако не факт что в обоих магазинах будут одинаковые товары, поэтому нужно joinить по полной.
+# SELECT kivano.product_name, kivano.price, sulpak.product_name, sulpak.price
+#     FROM kivano
+#         FULL JOIN sulpak
+#             ON kivano.product_name = sulpak.product_name;
+
+# 12. Найдите самый последний японский товар который был добавлен в produsers.
+# SELECT *
+#     FROM produsers
+#         WHERE produser_id = (
+#             SELECT MAX(produser_id)
+#                 FROM produsers
+#                     WHERE produser_country = 'Japan');

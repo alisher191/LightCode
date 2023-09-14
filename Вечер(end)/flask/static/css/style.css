@@ -1,0 +1,10 @@
+.form-contact label {
+    display: inline-block;
+    min-width: 80px;
+}
+.form-contact p {
+    margin: 10px 0 10px 0;
+}
+.form-contact input {
+    font-size: 16px;
+}

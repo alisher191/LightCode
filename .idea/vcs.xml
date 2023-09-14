@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/Вечер(end)/Parser/parsebot" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Вечер(end)/day_3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Вечер(end)/functions" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Вечер(end)/tgbot" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Вечер(end)/work_with_files" vcs="Git" />
+  </component>
+</project>

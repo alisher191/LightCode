@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    MyStore
+{% endblock %}
+
+
+{% block cat %}
+<ul class="nav nav-tabs container text-center">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">All</a>
+  </li>
+  {% for category in categories %}
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'category' category.id  %}">{{category.name}}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    
+    {% for product in products %}
+        
+        <div class="card mr-5 d-inline-block" style="width: 20rem;">
+<br>
+            <img src="{{ product.image.url }}" width="100%" alt="...">
+
+            <div class="card-body">
+                <h6 class="card-title">{{ product.name }}</h6>
+                <p class="card-text">{{ product.category }}</p>
+                <p class="card-text">Price: {{ product.price }} $</p>
+                <a href="{% url 'product' product.id %}" class="btn btn-primary">View</a>
+                <a href="{% url 'basket_add' product.id %}" class="btn btn-primary">Add to Basket</a>
+            </div>
+
+        </div> 
+    {% endfor %}
+   
+</div>
+{% endblock %}
